@@ -28,3 +28,19 @@ print(vocab)
 
 text_back = decode (ids)
 print(text_back)
+
+def build_dataset(ids, block_size=3):
+
+    inputs = []
+    targets = []
+
+    for i in range(len(ids) - block_size):
+        x = ids[i:i+block_size]
+        y = ids[i+block_size]
+        inputs.append(x)
+        targets.append(y)
+    return inputs, targets
+
+inputs, targets = build_dataset(ids, block_size=3)
+print("Inputs:", inputs)
+print("Targets:", targets)
