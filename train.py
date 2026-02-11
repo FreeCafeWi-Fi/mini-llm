@@ -30,3 +30,11 @@ for epoch in range(50):
 
     if epoch % 10 == 0:
         print(f"Epoch {epoch}, Loss: {loss.item()}")
+
+with torch.no_grad():  # no gradient tracking needed
+    test_input = torch.tensor([[1, 2, 1]])  # "hello world hello"
+    logits = model(test_input)
+    predicted_id = torch.argmax(logits, dim=1).item()
+    print("Predicted next word ID:", predicted_id)
+    print("Predicted word:", word_to_id.keys())
+    print("Predicted word:", [w for w, i in word_to_id.items() if i == predicted_id][0])
