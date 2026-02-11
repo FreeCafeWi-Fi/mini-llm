@@ -1,10 +1,13 @@
 def tokenize(text):
   word = text.split()
 
-  word_to_id = {"hello": 1, "world": 2}
-
+  word_to_id = {}
+  next _id = 1
+  for w in word:
+      if w not in word_to_id:
+        word_to_id[w] = nwxt_id
+        next_id+= 1
   ids = [word_to_id[w] for w in word]
-
   return ids
   
-print(tokenize("hello world hello"))
+print(tokenize("hello world hello test world"))
