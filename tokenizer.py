@@ -1,10 +1,10 @@
-def tokenize(text):
-next_id = 1
+word_to_id = {}
+next_id=1
 
 def tokenize(text):
   global word_to_id, next_id
 
-  words = text.split()
+  word = text.split()
   
   for w in word:
       if w not in word_to_id:
