@@ -2,7 +2,7 @@ def tokenize(text):
   word = text.split()
 
   word_to_id = {}
-  next _id = 1
+  next_id = 1
   for w in word:
       if w not in word_to_id:
         word_to_id[w] = nwxt_id
