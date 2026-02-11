@@ -8,6 +8,9 @@ def tokenize(text):
         word_to_id[w] = next_id
         next_id+= 1
   ids = [word_to_id[w] for w in word]
-  return ids
+  return ids, word_to_id
   
-print(tokenize("hello world hello test world"))
+ids, vocab = tokenize("hello world hello test world")
+print(ids)
+print(vocab)
+
