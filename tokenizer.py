@@ -1,4 +1,10 @@
 def tokenize(text):
-  return text.split()
+  word = text.split()
 
-print(tokenize("hello world"))
+  word_to_id = {"hello": 1, "world": 2}
+
+  ids = [word_to_id[w] for w in words]
+
+  return ids
+  
+print(tokenize("hello world hello"))
