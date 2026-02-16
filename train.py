@@ -2,7 +2,7 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 
-from tokenizer import tokenize, build_dataset, word_to_id
+from tokenizer import tokenize, build_dataset, word_to_id, save_vocab
 from model import TinyModel
 
 # 1. Prepare data
@@ -31,11 +31,16 @@ for epoch in range(50):
     if epoch % 10 == 0:
         print(f"Epoch {epoch}, Loss: {loss.item()}")
 
+# 5. Quick test prediction (optional sanity check)
 with torch.no_grad():
     test_input = torch.tensor([[1, 2, 1]])  # example context
     logits = model(test_input)
     predicted_id = torch.argmax(logits, dim=1).item()
     print("Predicted next word ID:", predicted_id)
-    # find word by id
     predicted_word = [w for w, i in word_to_id.items() if i == predicted_id][0]
     print("Predicted word:", predicted_word)
+
+# 6. Save model + vocab for chat.py
+torch.save(model.state_dict(), "model.pth")
+save_vocab("vocab.json")
+print("Training complete. Model and vocab saved.")
